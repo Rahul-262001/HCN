@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trail-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trail-website
+  template:
+    metadata:
+      labels:
+        app: trail-website
+    spec:
+      containers:
+      - name: trail-container
+        image: serieswatcher/trail:20231108190648
+        ports:
+        - containerPort: 80

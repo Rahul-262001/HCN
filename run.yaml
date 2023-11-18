@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: test
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+          hostPort: 80
+        volumeMounts:
+        - name: test-html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: test-html
+        configMap:
+          name: test-configmap
+          items:
+          - key: test.html
+            path: test.html
