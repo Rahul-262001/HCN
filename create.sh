@@ -61,6 +61,8 @@ fi
 # Prompt for the name of the Kubernetes deployment
 read -p "Enter the name of the Kubernetes deployment: " K8S_DEPLOYMENT_NAME
 
+echo "Please check the port"
+kubectl get services
 # Prompt for the NodePort value
 read -p "Enter the NodePort value (e.g., 30000-32767): " NODE_PORT
 
@@ -105,6 +107,8 @@ spec:
       nodePort: $NODE_PORT
   type: NodePort" > deployment.yaml
 
+#
+#kubectl get services 
 # Apply Kubernetes deployment
 kubectl apply -f deployment.yaml
 
@@ -115,5 +119,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Workflow completed successfully!"
+
 
 echo "The link is http://10.0.0.8:$NODE_PORT/$HTML_FILE"
