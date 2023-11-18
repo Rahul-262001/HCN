@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            margin-bottom: 16px;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Advanced Test Page</h1>
+    </header>
+
+    <section>
+        <h2>JavaScript Example</h2>
+        <button onclick="showMessage()">Click me</button>
+        <p id="output"></p>
+
+        <script>
+            function showMessage() {
+                document.getElementById('output').innerHTML = 'Hello, this message is generated using JavaScript!';
+            }
+        </script>
+    </section>
+
+    <section>
+        <h2>PHP Example with Form</h2>
+        <form action="" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $name = htmlspecialchars($_POST['name']);
+                $email = htmlspecialchars($_POST['email']);
+                $message = htmlspecialchars($_POST['message']);
+
+                echo "<p>Thank you, $name, for your message:</p>";
+                echo "<p>Email: $email</p>";
+                echo "<p>Message: $message</p>";
+            }
+        ?>
+    </section>
+
+    <section>
+        <h2>CSS Example</h2>
+        <p>This section has some styled content.</p>
+    </section>
+
+</body>
+</html>
+
