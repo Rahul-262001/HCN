@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newtemp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: newtemp
+  template:
+    metadata:
+      labels:
+        app: newtemp
+    spec:
+      containers:
+      - name: newtemp
+        image: serieswatcher/newtemp:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newtemp-service
+spec:
+  selector:
+    app: newtemp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30018
+  type: NodePort
