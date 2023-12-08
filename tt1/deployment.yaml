@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tt1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tt1
+  template:
+    metadata:
+      labels:
+        app: tt1
+    spec:
+      containers:
+      - name: tt1
+        image: serieswatcher/tt1:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tt1-service
+spec:
+  selector:
+    app: tt1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30001
+  type: NodePort
