@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fff
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fff
+  template:
+    metadata:
+      labels:
+        app: fff
+    spec:
+      containers:
+      - name: fff
+        image: serieswatcher/fff:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fff-service
+spec:
+  selector:
+    app: fff
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30007
+  type: NodePort

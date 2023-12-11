@@ -15,9 +15,8 @@ echo "Deleting the NodePort service"
 
 kubectl get services
 
-echo "Press Enter to proceed"
-read dummy_input
-
+echo "Enter the service name "
+read  $name
 kubectl delete service $name
 
 echo "After Deleting"
