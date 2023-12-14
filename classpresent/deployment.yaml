@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: presentation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: presentation
+  template:
+    metadata:
+      labels:
+        app: presentation
+    spec:
+      containers:
+      - name: presentation
+        image: serieswatcher/present:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: presentation-service
+spec:
+  selector:
+    app: presentation
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: '30008
+  type: NodePort

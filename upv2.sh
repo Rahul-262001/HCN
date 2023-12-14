@@ -1,4 +1,5 @@
 #!/bin/bash
+figlet -c "Welcome to my Program" | sed 's/./\x1b[31m&\x1b[0m/g'
 
 clear
 figlet -c "Welcome to my Program" | sed 's/./\x1b[31m&\x1b[0m/g'
