@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ttyd-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ttyd
+  template:
+    metadata:
+      labels:
+        app: ttyd
+    spec:
+      containers:
+      - name: ttyd-container
+        image: serieswatcher/ubuntu-ttyd:latest
+        ports:
+        - containerPort: 7681

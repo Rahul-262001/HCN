@@ -1,0 +1,13 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: ttyd-service
+spec:
+  selector:
+    app: ttyd
+  ports:
+    - protocol: TCP
+      port: 30016  # Use any available port on your cluster
+      targetPort: 7681
+  type: NodePort
