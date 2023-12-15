@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lala
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lala
+  template:
+    metadata:
+      labels:
+        app: lala
+    spec:
+      containers:
+      - name: lala-container
+        image: serieswatcher/ubuntu-ttyd:latest
+        ports:
+        - containerPort: 7681
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lala-service
+spec:
+  selector:
+    app: lala
+  ports:
+    - protocol: TCP
+      port: 30021
+      targetPort: 7681
+  type: NodePort

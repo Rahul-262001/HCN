@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: works
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: works
+  template:
+    metadata:
+      labels:
+        app: works
+    spec:
+      containers:
+      - name: works-container
+        image: serieswatcher/ubuntu-ttyd:latest
+        ports:
+        - containerPort: 7681
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: works-service
+spec:
+  selector:
+    app: works
+  ports:
+    - protocol: TCP
+      port: 7681
+      targetPort: 7681
+      nodePort: 30022
+  type: NodePort

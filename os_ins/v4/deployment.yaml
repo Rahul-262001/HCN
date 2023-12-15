@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idkabtthis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: idkabtthis
+  template:
+    metadata:
+      labels:
+        app: idkabtthis
+    spec:
+      containers:
+      - name: idkabtthis-container
+        image: serieswatcher/ubuntu-ttyd:latest
+        ports:
+        - containerPort: 7681
+---
+

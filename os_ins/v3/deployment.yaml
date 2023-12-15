@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: final
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: final
+  template:
+    metadata:
+      labels:
+        app: final
+    spec:
+      containers:
+      - name: final-container
+        image: serieswatcher/ubuntu-ttyd:latest
+        ports:
+        - containerPort: 7681
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: final-service
+spec:
+  selector:
+    app: final
+  ports:
+    - protocol: TCP
+      Port: 30020
+      targetPort: 7681
+  type: NodePort
