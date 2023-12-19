@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kali
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kali
+  template:
+    metadata:
+      labels:
+        app: kali
+    spec:
+      containers:
+      - name: kali
+        image: serieswatcher/kalilinux:latest
+        ports:
+        - containerPort: 6901
+        env:  # Move env under containers
+          - name: VNC_PW
+            value: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kali-service
+spec:
+  selector:
+    app: kali
+  ports:
+    - protocol: TCP
+      port: 6901
+      targetPort: 6901
+      nodePort: 30024
+  type: NodePort

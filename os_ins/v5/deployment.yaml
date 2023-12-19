@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: works
+  name: iusearchbtw
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: works
+      app: iusearchbtw
   template:
     metadata:
       labels:
-        app: works
+        app: iusearchbtw
     spec:
       containers:
-      - name: works-container
-        image: serieswatcher/ubuntu-ttyd:latest
+      - name: iusearchbtw-container
+        image: serieswatcher/arch-ttyd:latest
         ports:
         - containerPort: 7681
 ---
@@ -22,13 +22,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: works-service
+  name: iusearchbtw-service
 spec:
   selector:
-    app: works
+    app: iusearchbtw
   ports:
     - protocol: TCP
       port: 7681
       targetPort: 7681
-      nodePort: 30022
+      nodePort: 30023
   type: NodePort
