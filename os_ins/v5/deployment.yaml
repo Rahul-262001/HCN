@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iusearchbtw
+  name: prsubu
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: iusearchbtw
+      app: prsubu
   template:
     metadata:
       labels:
-        app: iusearchbtw
+        app: prsubu
     spec:
       containers:
-      - name: iusearchbtw-container
-        image: serieswatcher/arch-ttyd:latest
+      - name: prsubu-container
+        image: serieswatcher/ubuntu-ttyd:latest
         ports:
         - containerPort: 7681
 ---
@@ -22,13 +22,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: iusearchbtw-service
+  name: prsubu-service
 spec:
   selector:
-    app: iusearchbtw
+    app: prsubu
   ports:
     - protocol: TCP
       port: 7681
       targetPort: 7681
-      nodePort: 30023
+      nodePort: 30026
   type: NodePort

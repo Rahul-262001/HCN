@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kali
+  name: kalipr
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kali
+      app: kalipr
   template:
     metadata:
       labels:
-        app: kali
+        app: kalipr
     spec:
       containers:
-      - name: kali
+      - name: kalipr
         image: serieswatcher/kalilinux:latest
         ports:
         - containerPort: 6901
-        env:  # Move env under containers
-          - name: VNC_PW
-            value: password
+        env:
+        - name: VNC_PW
+          value: password
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: kali-service
+  name: kalipr-service
 spec:
   selector:
-    app: kali
+    app: kalipr
   ports:
     - protocol: TCP
       port: 6901
       targetPort: 6901
-      nodePort: 30024
+      nodePort: 30029
   type: NodePort
