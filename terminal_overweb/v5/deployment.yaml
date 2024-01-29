@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prsubu
+  name: archttyd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: prsubu
+      app: archttyd
   template:
     metadata:
       labels:
-        app: prsubu
+        app: archttyd
     spec:
       containers:
-      - name: prsubu-container
-        image: serieswatcher/ubuntu-ttyd:latest
+      - name: archttyd-container
+        image: serieswatcher/arch-ttyd:latest
         ports:
         - containerPort: 7681
 ---
@@ -22,13 +22,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: prsubu-service
+  name: archttyd-service
 spec:
   selector:
-    app: prsubu
+    app: archttyd
   ports:
     - protocol: TCP
       port: 7681
       targetPort: 7681
-      nodePort: 30026
+      nodePort: 30002
   type: NodePort

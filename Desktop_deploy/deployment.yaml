@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kalipr
+  name: ubu
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kalipr
+      app: ubu
   template:
     metadata:
       labels:
-        app: kalipr
+        app: ubu
     spec:
       containers:
-      - name: kalipr
-        image: serieswatcher/kalilinux:latest
+      - name: ubu
+        image: serieswatcher/ubuntu:latest
         ports:
         - containerPort: 6901
         env:
@@ -24,13 +24,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kalipr-service
+  name: ubu-service
 spec:
   selector:
-    app: kalipr
+    app: ubu
   ports:
     - protocol: TCP
       port: 6901
       targetPort: 6901
-      nodePort: 30029
+      nodePort: 30005
   type: NodePort

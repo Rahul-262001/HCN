@@ -2,7 +2,7 @@
 figlet -c "Welcome to my Program" | sed 's/./\x1b[31m&\x1b[0m/g'
 
 
-
+echo "Hint: kalilinux, ubuntu"
 read -p "Enter the name of docker hub repo: " repo
 #./print_ports.sh
 TPORT=6901
