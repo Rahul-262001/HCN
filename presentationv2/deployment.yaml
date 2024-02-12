@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: newpre
+  name: pres4
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: newpre
+      app: pres4
   template:
     metadata:
       labels:
-        app: newpre
+        app: pres4
     spec:
       containers:
-      - name: newpre
-        image: nextcloud
+      - name: pres4
+        image: serieswatcher/pres2:latest
         ports:
         - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: newpre-service
+  name: pres4-service
 spec:
   selector:
-    app: newpre
+    app: pres4
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30010
+      nodePort: 30006
   type: NodePort
