@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextv1
+  name: Saas
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nextv1
+      app: Saas
   template:
     metadata:
       labels:
-        app: nextv1
+        app: Saas
     spec:
       containers:
-      - name: nextv1
+      - name: Saas
         image: nextcloud
         ports:
         - containerPort: 80
@@ -21,13 +21,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nextv1-service
+  name: Saas-service
 spec:
   selector:
-    app: nextv1
+    app: Saas
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30031
+      nodePort: 30512
   type: NodePort

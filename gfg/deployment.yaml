@@ -1,34 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Saas_
+  name: gfg
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Saas_
+      app: gfg
   template:
     metadata:
       labels:
-        app: Saas_
+        app: gfg
     spec:
       containers:
-      - name: Saas_-container
-        image: serieswatcher/ubuntu-ttyd:latest
+      - name: gfg
+        image: serieswatcher/fgf:latest
         ports:
-        - containerPort: 7681
+        - containerPort: 80
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: Saas_-service
+  name: gfg-service
 spec:
   selector:
-    app: Saas_
+    app: gfg
   ports:
     - protocol: TCP
-      port: 7681
-      targetPort: 7681
-      nodePort: 30765
+      port: 80
+      targetPort: 80
+      nodePort: 30019
   type: NodePort

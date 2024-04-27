@@ -1,34 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Saas_
+  name: asdew
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Saas_
+      app: asdew
   template:
     metadata:
       labels:
-        app: Saas_
+        app: asdew
     spec:
       containers:
-      - name: Saas_-container
-        image: serieswatcher/ubuntu-ttyd:latest
+      - name: asdew
+        image: serieswatcher/asd:latest
         ports:
-        - containerPort: 7681
+        - containerPort: 80
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: Saas_-service
+  name: asdew-service
 spec:
   selector:
-    app: Saas_
+    app: asdew
   ports:
     - protocol: TCP
-      port: 7681
-      targetPort: 7681
-      nodePort: 30765
+      port: 80
+      targetPort: 80
+      nodePort: 30126
   type: NodePort
