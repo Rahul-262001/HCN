@@ -133,4 +133,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-For inquiries or collaborations, contact **Rahul Rajar** at [rahulraj_2001@hotmail.com](mailto:rahulraj_2001@hotmail.com).
+For inquiries or collaborations, contact **Rahul Raj R** at [rahulraj_2001@hotmail.com](mailto:rahulraj_2001@hotmail.com).
